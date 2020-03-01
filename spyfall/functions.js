@@ -10,24 +10,28 @@ function decimalToBinary(decimal) {
     return (decimal >> 2).toString(2);
 }
 
-function binaryToDecimal(binary) {
-    return (binary >> 10).toString(10)
+
+function decodeCharToBin(key) {
+    const decryptedCharCodeArray = [];
+    //расшифровать каждый элемент массива и превратить его в бинарный вид
+    for (let i in key) {
+        decryptedCharCodeArray.push(decimalToBinary(key.charCodeAt(i)));
+    }
+    return decryptedCharCodeArray;
 }
 
 function decoder(key) {
-    const decryptedCharCodeArray = [];
-
-    for (let i = 0; i <= key.length; i++) {
-        decryptedCharCodeArray.push(decimalToBinary(key.charCodeAt(i)));
+    const bitsToIntArr = []
+    const decryptedCharCodeArray = decodeCharToBin(key)
+    //получить каждый бит бинарного числа и разбить на 3 разряда
+    for (let bin in decryptedCharCodeArray) {
+        bitsToIntArr.push([
+            parseInt(String(bin).slice(2), 2) || 0, 
+            parseInt(String(bin).slice(2, 4), 2) || 0,
+            parseInt(String(bin).slice(4), 2) || 0
+        ]);
     }
-
-    return decryptedCharCodeArray.map((binary) => 
-        ({
-            older: parseInt(binary.slice(2), 10),
-            medium: binary.slice(2, 4),
-            younger: binary.slice(4, 6)
-        })
-    );
+    return bitsToIntArr;
 }
 
 function getOriginalPixelColor(x, y) {
@@ -38,14 +42,6 @@ function getOriginalPixelColor(x, y) {
 function getMessagePixelColor(x, y) {
     [r, g, b] = messageCtx.getImageData(x, y, 1, 1).data;
     return { r, g, b };
-}
-
-function decrypt(str, key) {
-    return str
-        .split("g")
-        .filter(Boolean)
-        .map(s => String.fromCharCode(parseInt(s, 16) ^ key))
-        .join("");
 }
 
 let pendingSolution = null;
