@@ -7,7 +7,7 @@ function getEncryptionKey() {
 }
 
 function decimalToBinary(decimal) {
-    return (decimal >> 2).toString(2);
+    return ("00000000" + (decimal >> 2).toString(2)).substr(-8);
 }
 
 
@@ -20,18 +20,22 @@ function decodeCharToBin(key) {
     return decryptedCharCodeArray;
 }
 
-function decoder(key) {
+function decoder({ r, g, b }, key) {
     const bitsToIntArr = []
     const decryptedCharCodeArray = decodeCharToBin(key)
     //получить каждый бит бинарного числа и разбить на 3 разряда
-    for (let bin in decryptedCharCodeArray) {
+    for (let bin of decryptedCharCodeArray) {
         bitsToIntArr.push([
             parseInt(String(bin).slice(2), 2) || 0, 
-            parseInt(String(bin).slice(2, 4), 2) || 0,
-            parseInt(String(bin).slice(4), 2) || 0
+            parseInt(String(bin).slice(2, 5), 2) || 0,
+            parseInt(String(bin).slice(5), 2) || 0
         ]);
     }
-    return bitsToIntArr;
+    return bitsToIntArr.map(binary => ({
+        r: binary[0] + r,
+        g: binary[1] + g,
+        b: binary[2] + b
+    }));
 }
 
 function getOriginalPixelColor(x, y) {
