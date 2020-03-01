@@ -7,9 +7,8 @@ function getEncryptionKey() {
 }
 
 function decimalToBinary(decimal) {
-    return ("00000000" + (decimal >> 2).toString(2)).substr(-8);
+    return ("00000000" + (decimal >> 0).toString(2)).substr(-8);
 }
-
 
 function decodeCharToBin(key) {
     const decryptedCharCodeArray = [];
@@ -32,9 +31,9 @@ function decoder({ r, g, b }, key) {
         ]);
     }
     return bitsToIntArr.map(binary => ({
-        r: binary[0] + r,
+        r: binary[2] + r,
         g: binary[1] + g,
-        b: binary[2] + b
+        b: binary[0] + b
     }));
 }
 
