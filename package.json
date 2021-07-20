@@ -1,0 +1,23 @@
+{
+  "name": "javascript-interesting-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "minimumPriceBox.js",
+  "scripts": {
+    "test": "npx jest --watch --testPathIgnorePatterns=['node_modules']"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayetzki/javascript-interesting-exercises.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rayetzki/javascript-interesting-exercises/issues"
+  },
+  "homepage": "https://github.com/rayetzki/javascript-interesting-exercises#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
