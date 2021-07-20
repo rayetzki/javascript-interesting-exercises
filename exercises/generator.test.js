@@ -1,7 +1,7 @@
 const sequence = require("./generator");
 
 describe('First sequence', () => {
-    const generator = sequence(7, 3);
+    const generator = sequence(10, 3);
 
     test('First call', () => {
         expect(generator()).toBe(10);
@@ -16,11 +16,11 @@ describe('Second sequence', () => {
     const generator = sequence(7, 1);
 
     test('First call', () => {
-        expect(generator()).toBe(8);
+        expect(generator()).toBe(7);
     });
 
     test('Second call', () => {
-        expect(generator()).toBe(9);
+        expect(generator()).toBe(8);
     });
 });
 
@@ -28,14 +28,14 @@ describe('Third sequence', () => {
     const generator = sequence(7);
 
     test('First call', () => {
-        expect(generator()).toBe(8);
+        expect(generator()).toBe(7);
     });
 
     test('Second call', () => {
-        expect(generator()).toBe(9);
+        expect(generator()).toBe(8);
     });
 
     test('Third call', () => {
-        expect(generator()).toBe(10);
+        expect(generator()).toBe(9);
     });
 });
