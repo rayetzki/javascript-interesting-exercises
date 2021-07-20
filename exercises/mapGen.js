@@ -1,5 +1,9 @@
 function mapGen(fn, generator) {
-    return (...args) => fn(generator(...args));
+    function* generateValues(...args) {
+        yield fn(generator(...args));
+    }
+
+    return (...args) => generateValues(...args).next().value;
 }
 
 module.exports = mapGen;
