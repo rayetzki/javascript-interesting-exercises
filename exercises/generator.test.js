@@ -23,19 +23,3 @@ describe('Second sequence', () => {
         expect(generator()).toBe(8);
     });
 });
-
-describe('Third sequence', () => {
-    const generator = sequence(7);
-
-    test('First call', () => {
-        expect(generator()).toBe(7);
-    });
-
-    test('Second call', () => {
-        expect(generator()).toBe(8);
-    });
-
-    test('Third call', () => {
-        expect(generator()).toBe(9);
-    });
-});

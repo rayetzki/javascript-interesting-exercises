@@ -1,4 +1,4 @@
-function sequence(start = 0, step = 1) { 
+function sequence(start = 0, step = 1) {
     let result = start - step;
 
     function* generator() {
@@ -8,7 +8,7 @@ function sequence(start = 0, step = 1) {
         };
     };
     
-    return () => generator().next().value ;
+    return () => generator().next().value;
 }
 
 module.exports = sequence;
