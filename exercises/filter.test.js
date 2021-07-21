@@ -6,6 +6,8 @@ describe('Filter function', () => {
 
     it('Filters a list based on a predicate', () => {
         const filtered = input.filter(isEven);
+        const inputCopy = input.slice();
         expect(filter(input, isEven)).toStrictEqual(filtered);
+        expect(input).toStrictEqual(inputCopy);
     });
 });
