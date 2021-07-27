@@ -1,3 +1,1 @@
-const timeDiapason = /\d\d[:-]\d\d/g;
-
-module.exports = timeDiapason;
+module.exports = /\d\d[:-]\d\d/g;
