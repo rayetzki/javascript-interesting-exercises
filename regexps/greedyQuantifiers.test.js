@@ -1,6 +1,6 @@
 const { htmlComments, htmlTags } = require('./greedyQuantifiers');
 
-test('Correctly HTML comments', () => {
+test('Correctly matches HTML comments', () => {
     const testString = `... <!-- My -- comment 
     test --> ..  <!----> ..
     `;
@@ -9,7 +9,7 @@ test('Correctly HTML comments', () => {
     expect(result.includes('<!---->')).toBe(true);
 });
 
-test('Correctly HTML tags', () => {
+test('Correctly matches HTML tags', () => {
     const testString = '<> <a href="/"> <input type="radio" checked> <b>';
     const result = testString.match(htmlTags);
     expect(result.includes('<a href="/">')).toBe(true);
