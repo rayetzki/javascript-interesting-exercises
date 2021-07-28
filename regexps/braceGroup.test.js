@@ -16,14 +16,14 @@ test('Correctly finds all digits', () => {
     answers.forEach(answer => expect(result.includes(answer)).toBe(true));
 });
 
-test('Correctly finds all digits', () => {
+test('Correctly finds all operands', () => {
     const testString = "1.2 * 3.4";
     expect(parse(testString)).toStrictEqual(['1.2', '*', '3.4']);
 });
 
 test('Correctly matches MAC address', () => {
-    expect('01:32:54:67:89:AB'.test(macAddress)).toBe(true);
-    expect('0132546789AB'.test(macAddress)).toBe(false);
-    expect('01:32:54:67:89'.test(macAddress)).toBe(false);
-    expect('01:32:54:67:89:ZZ'.test(macAddress)).toBe(false);
+    expect(macAddress.test('01:32:54:67:89:AB')).toBe(true);
+    expect(macAddress.test('0132546789AB')).toBe(false);
+    expect(macAddress.test('01:32:54:67:89')).toBe(false);
+    expect(macAddress.test('01:32:54:67:89:ZZ')).toBe(false);
 });

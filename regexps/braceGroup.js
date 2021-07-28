@@ -1,14 +1,12 @@
-// TODO Write Regex
-
 function parse(expression) {
-    const regex = /ваш шаблон/g;
-    const { first, operator, second } = String(expression).match(regex).groups;
+    const regex = /(?<first>-?\d+(\.\d+)?)\s+(?<operator>[-+*/])\s+(?<second>-?\d+(\.\d+)?)/;
+    const { first, operator, second } = expression.trim().match(regex).groups;
     return [first, operator, second];
 }
 
 module.exports = {
-    hexColor: /ваш шаблон/g,
-    allDigits: /ваш шаблон/g,
+    hexColor: /#([a-f0-9]{3}){1,2}\b/gi,
+    allDigits: /-?\d+(\.\d+)?/g,
     parse,
-    macAddress: /ваш шаблон/g,
+    macAddress: /^[a-f0-9]{2}(:[a-f0-9]{2}){5}$/i,
 }
