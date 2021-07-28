@@ -9,7 +9,7 @@ test('Correctly finds all non-negative integers', () => {
     incorrect.forEach(answer => expect(result.includes(answer)).toBe(false));
 });
 
-test('Inserts HTML after body', () => {
+test.only('Inserts HTML after body', () => {
     const testStringBefore = `
         <html>
         <body style="height: 200px">

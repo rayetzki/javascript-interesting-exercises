@@ -21,10 +21,9 @@ test('Correctly finds all quoted strings', () => {
     expect(result[2]).toBe('"\\\\ \\""');
 });
 
-test.only('Correctly finds tags', () => {
+test('Correctly finds tags', () => {
     const testString = '<style> <styler> <style test="...">';
     const result = testString.match(styleTag);
-    console.log({ result })
     expect(result.includes("<style>")).toBe(true);
     expect(result.includes('<styler>')).toBe(false);
     expect(result.includes('<style test="...">')).toBe(true);
